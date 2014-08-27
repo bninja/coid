@@ -46,7 +46,7 @@ class Id(object, codecs.Codec):
 
     def __init__(self, encoding='hex', prefix=None):
         if encoding == 'hex':
-            self._encode, self._decode = lambda x: '{:032x}'.format(x), lambda x: int(x, 16)
+            self._encode, self._decode = lambda x: '{0:032x}'.format(x), lambda x: int(x, 16)
         elif encoding == 'base58':
             self._encode, self._decode = lambda x: base58_encode(x).zfill(22), base58_decode
         elif encoding == 'base62':
