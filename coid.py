@@ -1,5 +1,5 @@
 """
-Simple codecs for uuiids. Can be useful when you represent ids differently
+Simple codecs for ids. Can be useful when you represent them differently
 between domains. Use it e.g. like:
 
 .. code:: python

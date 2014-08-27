@@ -8,8 +8,8 @@ coid
 .. image:: https://coveralls.io/repos/bninja/coid/badge.png?branch=master
    :target: https://coveralls.io/r/bninja/coid?branch=master
 
-Simple codecs for uuiids. Can be useful when you represent ids differently
-between domains.
+Simple codecs for ids. Can be useful when you represent ids differently between
+domains.
 
 Get it:
 
