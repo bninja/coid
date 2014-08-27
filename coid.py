@@ -52,18 +52,18 @@ class Id(object, codecs.Codec):
         elif encoding == 'base62':
             self._encode, self._decode = lambda x: base62_encode(x), base62_decode
         else:
-            raise ValueError('Invalid encoding {}'.format(encoding))
+            raise ValueError('Invalid encoding {0}'.format(encoding))
         self.encoding = encoding
         self.prefix = prefix
 
     def encode(self, input, errors='strict'):
         if not isinstance(input, uuid.UUID):
             raise TypeError(
-                'Expected instance of {} not {}'.format(uuid.UUID, type(input))
+                'Expected instance of {0} not {1}'.format(uuid.UUID, type(input))
             )
         encoded = self._encode(input.int)
         if self.prefix:
-            value = '{}{}'.format(self.prefix, encoded)
+            value = '{0}{1}'.format(self.prefix, encoded)
         else:
             value = encoded
         return value
@@ -71,13 +71,13 @@ class Id(object, codecs.Codec):
     def decode(self, input, errors='strict'):
         if not isinstance(input, basestring):
             raise TypeError(
-                'Expected instance of {} not {}'
+                'Expected instance of {0} not {1}'
                 .format(basestring, type(input))
             )
         encoded = input
         if self.prefix:
             if not input.startswith(self.prefix):
-                raise ValueError('Does not start with "{}"'.format(self.prefix))
+                raise ValueError('Does not start with "{0}"'.format(self.prefix))
             encoded = encoded[len(self.prefix):]
         decoded = self._decode(encoded)
         return uuid.UUID(int=decoded)
@@ -97,7 +97,7 @@ class Ids(object, codecs.Codec):
                 return id.decode(input)
             except ValueError:
                 pass
-        raise ValueError('Does "{}" not match any encoding'.format(input))
+        raise ValueError('Does "{0}" not match any encoding'.format(input))
 
 
 def is_encoded(input, codec):
